@@ -108,7 +108,7 @@ data class DungeonRun(
 
 @Serializable
 data class DungeonClass(
-    val experience: Double
+    val experience: Double = 0.0
 )
 
 @Serializable
