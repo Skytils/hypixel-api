@@ -10,7 +10,8 @@ class Member(
     val player_data: PlayerData,
     //TODO: Rift
     @SerialName("accessory_bag_storage")
-    val accessory_data: AccessoryBagData
+    val accessory_data: AccessoryBagData,
+    val dungeons: DungeonsData
 )
 
 @Serializable
