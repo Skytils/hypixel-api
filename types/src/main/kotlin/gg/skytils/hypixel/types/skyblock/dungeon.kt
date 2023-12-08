@@ -1,0 +1,117 @@
+package gg.skytils.hypixel.types.skyblock
+
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.builtins.MapSerializer
+import kotlinx.serialization.builtins.serializer
+import kotlinx.serialization.descriptors.buildClassSerialDescriptor
+import kotlinx.serialization.descriptors.element
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
+import kotlinx.serialization.json.*
+
+@Serializable
+data class DungeonsData(
+    @Serializable(with = DungeonTypeSerializer::class)
+    val dungeon_types: Map<String, DungeonData>,
+    val player_classes: Map<String, DungeonClass>,
+    val dungeon_journal: DungeonJournalData,
+    val selected_dungeon_class: String,
+
+)
+
+object DungeonTypeSerializer : KSerializer<Map<String, DungeonData>> {
+    override val descriptor = MapSerializer(String.serializer(), DungeonDataSerializer).descriptor
+
+    override fun deserialize(decoder: Decoder): Map<String, DungeonData> =
+        (decoder as? JsonDecoder)?.decodeJsonElement()?.jsonObject?.let { json ->
+            json.entries
+                .groupBy { it.key.removePrefix("master_") }
+                .map { (k,v) ->
+                    val obj = buildJsonObject {
+                        v.forEach { put(if("master" in it.key) "master" else "normal", it.value) }
+                    }
+                    k to decoder.json.decodeFromJsonElement<DungeonData>(obj)
+                }.toMap()
+        } ?: error("Only json supported")
+
+    override fun serialize(encoder: Encoder, value: Map<String, DungeonData>) {
+        TODO("Not yet implemented")
+    }
+
+}
+
+@Serializable(with = DungeonDataSerializer::class)
+data class DungeonData(
+    val experience: Double,
+    val normal: DungeonModeData,
+    val master: DungeonModeData?
+)
+
+object DungeonDataSerializer : KSerializer<DungeonData> {
+    override val descriptor = buildClassSerialDescriptor("DungeonData") {
+        element<Double>("experience")
+        element<DungeonModeData>("normal")
+        element<DungeonModeData?>("master")
+    }
+
+    override fun deserialize(decoder: Decoder): DungeonData =
+        (decoder as? JsonDecoder)?.decodeJsonElement()?.jsonObject?.let { json ->
+            DungeonData(
+                json["normal"]?.jsonObject?.get("experience")?.jsonPrimitive?.double ?: 0.0,
+                decoder.json.decodeFromJsonElement(json["normal"]!!),
+                json["master"]?.takeIf {
+                    it.jsonObject.get("tier_completions")?.jsonObject?.isEmpty() == false
+                }?.let {
+                    decoder.json.decodeFromJsonElement(it)
+                }
+            )
+        } ?: error("Only json supported")
+
+    override fun serialize(encoder: Encoder, value: DungeonData) {
+        TODO("Not yet implemented")
+    }
+}
+
+@Serializable
+data class DungeonModeData(
+    val tier_completions: Map<String, Int> = emptyMap(),
+    val milestone_completions: Map<String, Int> = emptyMap(),
+    val highest_tier_completed: Int = 0,
+    val fastest_time: Map<String, Long> = emptyMap(),
+    val fastest_time_s: Map<String, Long> = emptyMap(),
+    val fastest_time_s_plus: Map<String, Long> = emptyMap(),
+    val best_runs: Map<String, List<DungeonRun>> = emptyMap(),
+    val best_score: Map<String, Int> = emptyMap(),
+    val mobs_killed: Map<String, Int> = emptyMap(),
+    val most_mobs_killed: Map<String, Int> = emptyMap(),
+    val most_healing: Map<String, Double> = emptyMap(),
+)
+
+@Serializable
+data class DungeonRun(
+    val timestamp: Long,
+    val score_exploration: Int,
+    val score_speed: Int,
+    val score_skill: Int,
+    val score_bonus: Int,
+    val dungeon_class: String,
+    val teammates: List<String>,
+    val elapsed_time: Long,
+    val damage_dealt: Double,
+    val deaths: Int,
+    val mobs_killed: Int,
+    val secrets_found: Int,
+    val damage_mitigated: Double = 0.0,
+    val ally_healing: Double = 0.0
+)
+
+@Serializable
+data class DungeonClass(
+    val experience: Double
+)
+
+@Serializable
+data class DungeonJournalData(
+    val unlocked_journals: List<String>
+)
