@@ -13,7 +13,8 @@ class Profile(
     @SerialName("cute_name")
     val name: String,
     val selected: Boolean,
-    val community_upgrades: UpgradeData = UpgradeData(null)
+    val community_upgrades: UpgradeData = UpgradeData(null),
+    val members: Map<String, Member>
 )
 
 @Serializable
