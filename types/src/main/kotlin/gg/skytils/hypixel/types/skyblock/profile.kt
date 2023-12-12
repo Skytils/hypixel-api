@@ -19,7 +19,7 @@ class Profile(
 
 @Serializable
 class UpgradeData(
-    val currently_upgrading: UpgradeInProgress?,
+    val currently_upgrading: UpgradeInProgress? = null,
     val upgrade_states: List<ProfileUpgrade> = emptyList()
 )
 
