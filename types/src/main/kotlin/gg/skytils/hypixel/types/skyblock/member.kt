@@ -11,7 +11,8 @@ class Member(
     //TODO: Rift
     @SerialName("accessory_bag_storage")
     val accessory_data: AccessoryBagData,
-    val dungeons: DungeonsData
+    val dungeons: DungeonsData,
+    val player_stats: PlayerStats
 )
 
 @Serializable
@@ -55,4 +56,29 @@ class AccessoryBagData(
     val unlocked_powers: List<String> = emptyList(),
     val highest_magical_power: Int = 0,
     val bag_upgrades_purchased: Int = 0
+)
+
+//TODO: Finish other stuff
+@Serializable
+class PlayerStats(
+    val kills: Map<String, Int>,
+    val deaths: Map<String, Int>,
+    val highest_critical_damage: Double,
+    val items_fished: Map<String, Int>,
+    val auctionStats: AuctionStats
+)
+
+@Serializable
+class AuctionStats(
+    val bids: Int,
+    val highest_bid: Double,
+    val won: Int,
+    val total_bought: Map<String, Int>,
+    val gold_spent: Double,
+    val created: Int,
+    val fees: Double,
+    val completed: Int,
+    val total_sold: Map<String, Int>,
+    val gold_earned: Double,
+    val no_bods: Int
 )
