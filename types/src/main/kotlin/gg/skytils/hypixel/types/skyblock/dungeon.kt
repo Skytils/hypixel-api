@@ -16,7 +16,7 @@ data class DungeonsData(
     val dungeon_types: Map<String, DungeonData>,
     val player_classes: Map<String, DungeonClass>,
     val dungeon_journal: DungeonJournalData,
-    val selected_dungeon_class: String,
+    val selected_dungeon_class: String? = null,
 
 )
 
@@ -113,5 +113,5 @@ data class DungeonClass(
 
 @Serializable
 data class DungeonJournalData(
-    val unlocked_journals: List<String>
+    val unlocked_journals: List<String> = emptyList()
 )

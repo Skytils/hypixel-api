@@ -10,9 +10,9 @@ class Member(
     val player_data: PlayerData,
     //TODO: Rift
     @SerialName("accessory_bag_storage")
-    val accessory_data: AccessoryBagData,
-    val dungeons: DungeonsData,
-    val player_stats: PlayerStats
+    val accessory_data: AccessoryBagData = AccessoryBagData(),
+    val dungeons: DungeonsData? = null,
+    val player_stats: PlayerStats = PlayerStats()
 )
 
 @Serializable
@@ -21,16 +21,16 @@ class PlayerData(
     val last_death: Long,
     val perks: Map<String, Double> = emptyMap(),
     val active_effects: List<PotionEffect>,
-    val paused_effects: List<PotionEffect>,
-    val temp_stat_buffs: JsonElement, //FIXME
+    val paused_effects: List<PotionEffect> = emptyList(),
+    val temp_stat_buffs: JsonElement = JsonObject(emptyMap()), //FIXME
     val death_count: Double,
-    val disabled_potion_effects: List<String>,
-    val visited_modes: List<String>,
+    val disabled_potion_effects: List<String> = emptyList(),
+    val visited_modes: List<String> = emptyList(),
     val unlocked_coll_tiers: List<String>,
-    val crafted_generators: List<String>,
-    val fastest_target_practice: Double,
-    val fishing_treasure_caught: Double,
-    val experience: Map<String, Double>,
+    val crafted_generators: List<String> = emptyList(),
+    val fastest_target_practice: Double = 0.0,
+    val fishing_treasure_caught: Double = 0.0,
+    val experience: Map<String, Double> = emptyMap()
 )
 
 @Serializable
@@ -51,7 +51,7 @@ class PotionEffect(
 
 @Serializable
 class AccessoryBagData(
-    val tuning: JsonObject,
+    val tuning: JsonObject = JsonObject(emptyMap()),
     val selected_power: String? = null,
     val unlocked_powers: List<String> = emptyList(),
     val highest_magical_power: Double = 0.0,
@@ -61,8 +61,8 @@ class AccessoryBagData(
 //TODO: Finish other stuff
 @Serializable
 class PlayerStats(
-    val kills: Map<String, Double>,
-    val deaths: Map<String, Double>,
+    val kills: Map<String, Double> = emptyMap(),
+    val deaths: Map<String, Double> = emptyMap(),
     val highest_critical_damage: Double = 0.0,
     val items_fished: Map<String, Double> = emptyMap(),
     val auctionStats: AuctionStats = AuctionStats()
