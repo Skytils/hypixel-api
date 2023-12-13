@@ -44,6 +44,7 @@ class PotionEffect(
 ) {
     @Serializable
     class PotionModifier(
+        @SerialName("key")
         val name: String,
         val amp: Double
     )
