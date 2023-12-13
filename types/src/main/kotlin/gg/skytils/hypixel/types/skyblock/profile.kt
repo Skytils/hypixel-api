@@ -27,7 +27,7 @@ class UpgradeData(
 class UpgradeInProgress(
     @SerialName("upgrade")
     val name: String,
-    val new_tier: Int,
+    val new_tier: Double,
     @SerialName("start_ms")
     val started: Long,
     @SerialName("who_started")
@@ -38,7 +38,7 @@ class UpgradeInProgress(
 class ProfileUpgrade(
     @SerialName("upgrade")
     val name: String,
-    val tier: Int,
+    val tier: Double,
     @SerialName("started_ms")
     val started: Long,
     val started_by: String,
@@ -56,7 +56,7 @@ class BankData(
 
 @Serializable
 class BankTransaction(
-    val amount: Int,
+    val amount: Double,
     val timestamp: Long,
     val action: String,
     @SerialName("initiator_name")

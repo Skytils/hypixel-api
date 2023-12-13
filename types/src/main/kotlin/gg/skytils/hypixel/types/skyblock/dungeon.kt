@@ -75,33 +75,33 @@ object DungeonDataSerializer : KSerializer<DungeonData> {
 
 @Serializable
 data class DungeonModeData(
-    val tier_completions: Map<String, Int> = emptyMap(),
-    val milestone_completions: Map<String, Int> = emptyMap(),
-    val highest_tier_completed: Int = 0,
-    val fastest_time: Map<String, Long> = emptyMap(),
-    val fastest_time_s: Map<String, Long> = emptyMap(),
-    val fastest_time_s_plus: Map<String, Long> = emptyMap(),
+    val tier_completions: Map<String, Double> = emptyMap(),
+    val milestone_completions: Map<String, Double> = emptyMap(),
+    val highest_tier_completed: Double = 0.0,
+    val fastest_time: Map<String, Double> = emptyMap(),
+    val fastest_time_s: Map<String, Double> = emptyMap(),
+    val fastest_time_s_plus: Map<String, Double> = emptyMap(),
     val best_runs: Map<String, List<DungeonRun>> = emptyMap(),
-    val best_score: Map<String, Int> = emptyMap(),
-    val mobs_killed: Map<String, Int> = emptyMap(),
-    val most_mobs_killed: Map<String, Int> = emptyMap(),
+    val best_score: Map<String, Double> = emptyMap(),
+    val mobs_killed: Map<String, Double> = emptyMap(),
+    val most_mobs_killed: Map<String, Double> = emptyMap(),
     val most_healing: Map<String, Double> = emptyMap(),
 )
 
 @Serializable
 data class DungeonRun(
     val timestamp: Long,
-    val score_exploration: Int,
-    val score_speed: Int,
-    val score_skill: Int,
-    val score_bonus: Int,
+    val score_exploration: Double,
+    val score_speed: Double,
+    val score_skill: Double,
+    val score_bonus: Double,
     val dungeon_class: String,
     val teammates: List<String>,
     val elapsed_time: Long,
     val damage_dealt: Double,
-    val deaths: Int,
-    val mobs_killed: Int,
-    val secrets_found: Int,
+    val deaths: Double,
+    val mobs_killed: Double,
+    val secrets_found: Double,
     val damage_mitigated: Double = 0.0,
     val ally_healing: Double = 0.0
 )
