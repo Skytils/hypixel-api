@@ -63,22 +63,22 @@ class AccessoryBagData(
 class PlayerStats(
     val kills: Map<String, Double>,
     val deaths: Map<String, Double>,
-    val highest_critical_damage: Double,
-    val items_fished: Map<String, Double>,
-    val auctionStats: AuctionStats
+    val highest_critical_damage: Double = 0.0,
+    val items_fished: Map<String, Double> = emptyMap(),
+    val auctionStats: AuctionStats = AuctionStats()
 )
 
 @Serializable
 class AuctionStats(
-    val bids: Double,
-    val highest_bid: Double,
-    val won: Double,
-    val total_bought: Map<String, Double>,
-    val gold_spent: Double,
-    val created: Double,
-    val fees: Double,
-    val completed: Double,
-    val total_sold: Map<String, Double>,
-    val gold_earned: Double,
-    val no_bods: Double
+    val bids: Double = 0.0,
+    val highest_bid: Double = 0.0,
+    val won: Double = 0.0,
+    val total_bought: Map<String, Double> = emptyMap(),
+    val gold_spent: Double = 0.0,
+    val created: Double = 0.0,
+    val fees: Double = 0.0,
+    val completed: Double = 0.0,
+    val total_sold: Map<String, Double> = emptyMap(),
+    val gold_earned: Double = 0.0,
+    val no_bods: Double = 0.0
 )
