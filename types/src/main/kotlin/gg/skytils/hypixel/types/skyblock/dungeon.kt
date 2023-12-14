@@ -61,7 +61,7 @@ object DungeonDataSerializer : KSerializer<DungeonData> {
                 json["normal"]?.jsonObject?.get("experience")?.jsonPrimitive?.double ?: 0.0,
                 decoder.json.decodeFromJsonElement(json["normal"]!!),
                 json["master"]?.takeIf {
-                    it.jsonObject.get("tier_completions")?.jsonObject?.isEmpty() == false
+                    it.jsonObject["tier_completions"]?.jsonObject?.isEmpty() == false
                 }?.let {
                     decoder.json.decodeFromJsonElement(it)
                 }
