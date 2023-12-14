@@ -14,3 +14,7 @@ dependencies {
     compileOnly("org.jetbrains.kotlinx:kotlinx-serialization-core:1.4.1")
     compileOnly("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
 }
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(8)
+}
