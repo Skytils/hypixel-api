@@ -15,7 +15,7 @@ data class DungeonsData(
     @Serializable(with = DungeonTypeSerializer::class)
     val dungeon_types: Map<String, DungeonData>,
     val player_classes: Map<String, DungeonClass>,
-    val dungeon_journal: DungeonJournalData,
+    val dungeon_journal: DungeonJournalData = DungeonJournalData(),
     val selected_dungeon_class: String? = null,
 
 )
