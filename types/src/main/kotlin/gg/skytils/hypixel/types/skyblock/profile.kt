@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 import java.util.*
 
 @Serializable
-class Profile(
+data class Profile(
     @Contextual
     @SerialName("profile_id")
     val id: UUID,
@@ -18,13 +18,13 @@ class Profile(
 )
 
 @Serializable
-class UpgradeData(
+data class UpgradeData(
     val currently_upgrading: UpgradeInProgress? = null,
     val upgrade_states: List<ProfileUpgrade> = emptyList()
 )
 
 @Serializable
-class UpgradeInProgress(
+data class UpgradeInProgress(
     @SerialName("upgrade")
     val name: String,
     val new_tier: Double,
@@ -35,7 +35,7 @@ class UpgradeInProgress(
 )
 
 @Serializable
-class ProfileUpgrade(
+data class ProfileUpgrade(
     @SerialName("upgrade")
     val name: String,
     val tier: Double,
@@ -49,13 +49,13 @@ class ProfileUpgrade(
 )
 
 @Serializable
-class BankData(
+data class BankData(
     val balance: Double,
     val transactions: List<BankTransaction>
 )
 
 @Serializable
-class BankTransaction(
+data class BankTransaction(
     val amount: Double,
     val timestamp: Long,
     val action: String,
