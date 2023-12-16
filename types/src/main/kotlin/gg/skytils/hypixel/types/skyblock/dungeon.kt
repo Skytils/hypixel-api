@@ -14,7 +14,11 @@ import kotlinx.serialization.json.*
 data class DungeonsData(
     @Serializable(with = DungeonTypeSerializer::class)
     val dungeon_types: Map<String, DungeonData>,
-    val player_classes: Map<String, DungeonClass>,
+    // This can not exist when the player has entered a dungeon but not completed it
+    // For some reason some players will have an empty class map and others will just be missing the entire thing
+    // Why did they design it this way?
+    // Why is there no api guarantee?
+    val player_classes: Map<String, DungeonClass> = emptyMap(),
     val dungeon_journal: DungeonJournalData = DungeonJournalData(),
     val selected_dungeon_class: String? = null,
 
