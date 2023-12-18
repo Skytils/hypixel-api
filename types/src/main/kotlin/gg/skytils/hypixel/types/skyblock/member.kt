@@ -12,7 +12,8 @@ data class Member(
     @SerialName("accessory_bag_storage")
     val accessory_data: AccessoryBagData = AccessoryBagData(),
     val dungeons: DungeonsData? = null,
-    val player_stats: PlayerStats = PlayerStats()
+    val player_stats: PlayerStats = PlayerStats(),
+    val inventory: InventoryData = InventoryData()
 )
 
 @Serializable
