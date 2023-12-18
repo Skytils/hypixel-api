@@ -13,7 +13,8 @@ data class Member(
     val accessory_data: AccessoryBagData = AccessoryBagData(),
     val dungeons: DungeonsData? = null,
     val player_stats: PlayerStats = PlayerStats(),
-    val inventory: InventoryData = InventoryData()
+    val inventory: InventoryData = InventoryData(),
+    val pets_data: PetsData = PetsData()
 )
 
 @Serializable
