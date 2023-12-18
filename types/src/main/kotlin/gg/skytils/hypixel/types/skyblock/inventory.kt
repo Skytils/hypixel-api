@@ -25,5 +25,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class InventoryData(
     @SerialName("inv_armor")
-    val armor: Inventory = Inventory("")
+    val armor: Inventory = Inventory(""),
+    @SerialName("inv_contents")
+    val inventory: Inventory = Inventory("")
 )
