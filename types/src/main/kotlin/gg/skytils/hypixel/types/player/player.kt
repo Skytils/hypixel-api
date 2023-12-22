@@ -30,10 +30,17 @@ data class Player(
     val social_media: SocialMediaData,
     internal val newPackageRank: String = "NONE",
     internal val monthlyPackageRank: String = "NONE",
+    @SerialName("rank")
+    internal val special_rank: String? = null,
     @SerialName("rankPlusColor")
-    val plus_color: String
+    val plus_color: String,
+    @SerialName("monthlyRankColor")
+    val mvp_plus_plus_color: String = "AQUA",
+    @SerialName("displayname")
+    val display_name: String
 ) {
-    val rank = if (newPackageRank == "MVP_PLUS" && monthlyPackageRank == "SUPERSTAR") "MVP_PLUS_PLUS" else newPackageRank
+    val rank: String
+        get() = special_rank ?: if (newPackageRank == "MVP_PLUS" && monthlyPackageRank == "SUPERSTAR") "MVP_PLUS_PLUS" else newPackageRank
 }
 
 @Serializable
