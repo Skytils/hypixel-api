@@ -14,7 +14,8 @@ data class Member(
     val dungeons: DungeonsData? = null,
     val player_stats: PlayerStats = PlayerStats(),
     val inventory: InventoryData = InventoryData(),
-    val pets_data: PetsData = PetsData()
+    val pets_data: PetsData = PetsData(),
+    val slayer: SlayerData = SlayerData()
 )
 
 @Serializable
