@@ -40,7 +40,7 @@ data class SlayerQuestData(
     val type: String,
     val tier: Double,
     val start_timestamp: Long = 0L,
-    val combat_xp: Double,
+    val combat_xp: Double = 0.0,
     val recent_mob_kills: List<SlayerKill> = emptyList()
 )
 

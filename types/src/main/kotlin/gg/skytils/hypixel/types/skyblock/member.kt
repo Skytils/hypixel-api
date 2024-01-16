@@ -23,7 +23,7 @@ data class PlayerData(
     val visited_zones: List<String> = emptyList(),
     val last_death: Long = 0L,
     val perks: Map<String, Double> = emptyMap(),
-    val active_effects: List<PotionEffect>,
+    val active_effects: List<PotionEffect> = emptyList(),
     val paused_effects: List<PotionEffect> = emptyList(),
     val temp_stat_buffs: JsonElement = JsonObject(emptyMap()), //FIXME
     val death_count: Double = 0.0,

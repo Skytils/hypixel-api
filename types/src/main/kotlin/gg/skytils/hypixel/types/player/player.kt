@@ -33,7 +33,7 @@ data class Player(
     @SerialName("rank")
     internal val special_rank: String? = null,
     @SerialName("rankPlusColor")
-    val plus_color: String,
+    val plus_color: String = "RED",
     @SerialName("monthlyRankColor")
     val mvp_plus_plus_color: String = "AQUA",
     @SerialName("displayname")
