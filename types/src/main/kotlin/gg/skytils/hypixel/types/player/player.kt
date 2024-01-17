@@ -27,7 +27,7 @@ data class Player(
     val achievements_one_time: List<String> = emptyList(),
     val achievements: Map<String, Double> = emptyMap(),
     @SerialName("socialMedia")
-    val social_media: SocialMediaData,
+    val social_media: SocialMediaData = SocialMediaData(),
     internal val newPackageRank: String = "NONE",
     internal val monthlyPackageRank: String = "NONE",
     @SerialName("rank")
@@ -46,5 +46,5 @@ data class Player(
 @Serializable
 data class SocialMediaData(
     val links: Map<String, String> = emptyMap(),
-    val prompt: Boolean
+    val prompt: Boolean = false
 )
