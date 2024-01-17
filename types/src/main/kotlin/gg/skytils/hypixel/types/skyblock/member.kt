@@ -15,7 +15,9 @@ data class Member(
     val player_stats: PlayerStats = PlayerStats(),
     val inventory: InventoryData = InventoryData(),
     val pets_data: PetsData = PetsData(),
-    val slayer: SlayerData = SlayerData()
+    val slayer: SlayerData = SlayerData(),
+    @SerialName("jacobs_contests")
+    val jacob: JacobData = JacobData()
 )
 
 @Serializable
