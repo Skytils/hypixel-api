@@ -7,7 +7,7 @@ import kotlinx.serialization.json.JsonObject
 
 @Serializable
 data class Member(
-    val player_data: PlayerData,
+    val player_data: PlayerData = PlayerData(),
     //TODO: Rift
     @SerialName("accessory_bag_storage")
     val accessory_data: AccessoryBagData = AccessoryBagData(),
@@ -43,7 +43,7 @@ data class PotionEffect(
     val level: Double,
     val modifiers: List<PotionModifier> = emptyList(),
     val ticks_remaining: Long = 0,
-    val infinite: Boolean
+    val infinite: Boolean = false
 ) {
     @Serializable
     data class PotionModifier(

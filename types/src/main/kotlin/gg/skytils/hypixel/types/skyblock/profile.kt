@@ -12,7 +12,7 @@ data class Profile(
     val id: UUID,
     @SerialName("cute_name")
     val name: String,
-    val selected: Boolean,
+    val selected: Boolean = false,
     val community_upgrades: UpgradeData = UpgradeData(null),
     val members: Map<String, Member>
 )
@@ -51,7 +51,7 @@ data class ProfileUpgrade(
 @Serializable
 data class BankData(
     val balance: Double,
-    val transactions: List<BankTransaction>
+    val transactions: List<BankTransaction> = emptyList()
 )
 
 @Serializable
