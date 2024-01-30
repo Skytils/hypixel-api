@@ -20,11 +20,12 @@ package gg.skytils.hypixel.types.player
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonElement
 
 @Serializable
 data class Player(
     @SerialName("achievementsOneTime")
-    val achievements_one_time: List<String> = emptyList(),
+    val achievements_one_time: List<JsonElement> = emptyList(),
     val achievements: Map<String, Double> = emptyMap(),
     @SerialName("socialMedia")
     val social_media: SocialMediaData = SocialMediaData(),
