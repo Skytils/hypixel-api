@@ -27,5 +27,7 @@ data class InventoryData(
     @SerialName("inv_armor")
     val armor: Inventory = Inventory(""),
     @SerialName("inv_contents")
-    val inventory: Inventory = Inventory("")
+    val inventory: Inventory = Inventory(""),
+    @SerialName("wardrobe_contents")
+    val wardrobe: Inventory = Inventory("")
 )
