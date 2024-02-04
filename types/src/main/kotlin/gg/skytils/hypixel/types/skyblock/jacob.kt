@@ -24,14 +24,24 @@ import kotlinx.serialization.json.JsonElement
 
 @Serializable
 data class JacobData(
-    @SerialName("medals_inv")
-    val medals: Map<String, Double> = emptyMap(),
+    /**
+     * The amount of medals the player has in their "inventory"
+     */
+    val medals_inv: Map<String, Double> = emptyMap(),
     val perks: Map<String, JsonElement> = emptyMap(),
     val contests: Map<String, JacobContest> = emptyMap(),
+    /**
+     * The unique medals a player has won in a specific collection
+     */
+    @SerialName("unique_brackets")
+    val medals: Map<String, List<String>> = emptyMap()
 )
 
 @Serializable
 data class JacobContest(
     val collected: Double = 0.0,
-    val claimed_rewards: Boolean = false
+    val claimed_rewards: Boolean = false,
+    val claimed_position: Int? = null,
+    val claimed_participants: Int? = null,
+    val claimed_medal: String? = null
 )
