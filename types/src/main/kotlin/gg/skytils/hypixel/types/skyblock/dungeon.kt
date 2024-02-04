@@ -79,9 +79,10 @@ object DungeonDataSerializer : KSerializer<DungeonData> {
 
 @Serializable
 data class DungeonModeData(
+    val times_played: Map<String, Double> = emptyMap(),
     val tier_completions: Map<String, Double> = emptyMap(),
     val milestone_completions: Map<String, Double> = emptyMap(),
-    val highest_tier_completed: Double = 0.0,
+    val highest_tier_completed: Int = 0,
     val fastest_time: Map<String, Double> = emptyMap(),
     val fastest_time_s: Map<String, Double> = emptyMap(),
     val fastest_time_s_plus: Map<String, Double> = emptyMap(),
@@ -90,6 +91,7 @@ data class DungeonModeData(
     val mobs_killed: Map<String, Double> = emptyMap(),
     val most_mobs_killed: Map<String, Double> = emptyMap(),
     val most_healing: Map<String, Double> = emptyMap(),
+    val watcher_kills: Map<String, Double> = emptyMap(),
 )
 
 @Serializable
