@@ -13,6 +13,15 @@ repositories {
 dependencies {
     compileOnly("org.jetbrains.kotlinx:kotlinx-serialization-core:1.4.1")
     compileOnly("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
+
+    testImplementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.4.1")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
+    testImplementation("io.ktor:ktor-client-core:2.3.7")
+    testImplementation("io.ktor:ktor-client-cio:2.3.7")
+    testImplementation("io.ktor:ktor-client-content-negotiation:2.3.7")
+    testImplementation("io.ktor:ktor-serialization-kotlinx-json-jvm:2.3.7") {
+        exclude(group = "org.jetbrains.kotlinx")
+    }
 }
 
 java {
