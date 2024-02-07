@@ -22,6 +22,8 @@ dependencies {
     testImplementation("io.ktor:ktor-serialization-kotlinx-json-jvm:2.3.7") {
         exclude(group = "org.jetbrains.kotlinx")
     }
+    testRuntimeOnly("org.slf4j:slf4j-simple:2.0.12")
+
 }
 
 java {
