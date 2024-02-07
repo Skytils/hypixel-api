@@ -17,7 +17,8 @@ data class Member(
     val pets_data: PetsData = PetsData(),
     val slayer: SlayerData = SlayerData(),
     @SerialName("jacobs_contests")
-    val jacob: JacobData = JacobData()
+    val jacob: JacobData = JacobData(),
+    val trophy_fish: TrophyFishData = TrophyFishData()
 )
 
 @Serializable
