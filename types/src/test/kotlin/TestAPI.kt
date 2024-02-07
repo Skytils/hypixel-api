@@ -8,8 +8,15 @@ import io.ktor.client.request.*
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
 import kotlinx.coroutines.runBlocking
+import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.descriptors.PrimitiveKind
+import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.modules.SerializersModule
 import java.util.*
 
 /*
@@ -35,6 +42,10 @@ object TestAPI {
         prettyPrint = true
         isLenient = true
         ignoreUnknownKeys = true
+        serializersModule = SerializersModule {
+            include(serializersModule)
+            contextual(UUID::class, UUIDAsString)
+        }
     }
     private val client = HttpClient(CIO) {
         install(ContentNegotiation) {
@@ -75,6 +86,18 @@ object TestAPI {
         runBlocking {
             getPlayer(uuid)
         }
+}
+
+object UUIDAsString : KSerializer<UUID> {
+    override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("UUID", PrimitiveKind.STRING)
+
+    override fun deserialize(decoder: Decoder): UUID =
+        UUID.fromString(decoder.decodeString())
+
+    override fun serialize(encoder: Encoder, value: UUID) {
+        TODO("Not yet implemented")
+    }
+
 }
 
 @Serializable
