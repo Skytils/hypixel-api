@@ -19,8 +19,7 @@ data class Member(
     @SerialName("jacobs_contests")
     val jacob: JacobData = JacobData(),
     val trophy_fish: TrophyFishData = TrophyFishData(),
-    @SerialName("item_data")
-    val itemData: ItemData = ItemData()
+    val item_data: ItemData = ItemData()
 )
 
 @Serializable
@@ -75,6 +74,12 @@ data class PlayerStats(
     val highest_critical_damage: Double = 0.0,
     val items_fished: Map<String, Double> = emptyMap(),
     val auctionStats: AuctionStats = AuctionStats()
+)
+
+@Serializable
+data class ItemData(
+    @SerialName("favorite_arrow")
+    val favoriteArrow: String = "",
 )
 
 @Serializable
