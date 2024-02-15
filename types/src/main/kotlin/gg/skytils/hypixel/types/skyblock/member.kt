@@ -78,8 +78,7 @@ data class PlayerStats(
 
 @Serializable
 data class ItemData(
-    @SerialName("favorite_arrow")
-    val favoriteArrow: String = "",
+    val favorite_arrow: String = "",
 )
 
 @Serializable
