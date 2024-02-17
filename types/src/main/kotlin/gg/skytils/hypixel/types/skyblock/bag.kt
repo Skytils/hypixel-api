@@ -1,6 +1,6 @@
 /*
  * Skytils - Hypixel Skyblock Quality of Life Mod
- * Copyright (C) 2020-2023 Skytils
+ * Copyright (C) 2020-2024 Skytils
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published
@@ -19,17 +19,9 @@
 package gg.skytils.hypixel.types.skyblock
 
 import gg.skytils.hypixel.types.util.Inventory
-import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class InventoryData(
-    @SerialName("inv_contents")
-    val inventory: Inventory = Inventory(""),
-    @SerialName("bag_contents")
-    val bag: BagData = BagData(),
-    @SerialName("inv_armor")
-    val armor: Inventory = Inventory(""),
-    @SerialName("wardrobe_contents")
-    val wardrobe: Inventory = Inventory("")
+data class BagData(
+    val quiver: Inventory = Inventory(""),
 )
