@@ -50,6 +50,7 @@ data class Pet(
     val active: Boolean = false,
     val tier: String,
     val heldItem: String? = null,
-    val candyUsed: Double = 0.0,
-    val skin: String? = null
+    val candyUsed: Int = 0,
+    val skin: String? = null,
+    val hideInfo: Boolean = false,
 )
