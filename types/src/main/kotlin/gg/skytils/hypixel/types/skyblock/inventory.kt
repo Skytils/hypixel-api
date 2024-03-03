@@ -26,6 +26,10 @@ import kotlinx.serialization.Serializable
 data class InventoryData(
     @SerialName("inv_contents")
     val inventory: Inventory = Inventory(""),
+    @SerialName("ender_chest_contents")
+    val ender_chest: Inventory = Inventory(""),
+    @SerialName("backpack_contents")
+    val backpacks: Map<String, Inventory> = emptyMap(),
     @SerialName("bag_contents")
     val bag: BagData = BagData(),
     @SerialName("inv_armor")

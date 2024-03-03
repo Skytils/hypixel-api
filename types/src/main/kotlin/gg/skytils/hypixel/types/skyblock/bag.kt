@@ -19,9 +19,12 @@
 package gg.skytils.hypixel.types.skyblock
 
 import gg.skytils.hypixel.types.util.Inventory
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class BagData(
     val quiver: Inventory = Inventory(""),
+    @SerialName("talisman_bag")
+    val talisman: Inventory = Inventory(""),
 )

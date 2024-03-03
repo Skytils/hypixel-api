@@ -9,17 +9,40 @@ import kotlinx.serialization.json.JsonObject
 data class Member(
     val player_data: PlayerData = PlayerData(),
     //TODO: Rift
+    val rift: RiftData = RiftData(),
     @SerialName("accessory_bag_storage")
     val accessory_data: AccessoryBagData = AccessoryBagData(),
     val dungeons: DungeonsData? = null,
     val player_stats: PlayerStats = PlayerStats(),
     val inventory: InventoryData = InventoryData(),
     val pets_data: PetsData = PetsData(),
+    @SerialName("nether_island_player_data")
+    val nether_island_data: NetherIslandData = NetherIslandData(),
     val slayer: SlayerData = SlayerData(),
     @SerialName("jacobs_contests")
     val jacob: JacobData = JacobData(),
     val trophy_fish: TrophyFishData = TrophyFishData(),
     val item_data: ItemData = ItemData()
+)
+
+@Serializable
+data class RiftData(
+    val access: AccessData = AccessData()
+)
+
+@Serializable
+data class AccessData(
+    val consumed_prism: Boolean = false,
+)
+
+@Serializable
+data class NetherIslandData(
+    val abiphone: AbiphoneData = AbiphoneData()
+)
+
+@Serializable
+data class AbiphoneData(
+    val active_contacts: List<String> = emptyList()
 )
 
 @Serializable
