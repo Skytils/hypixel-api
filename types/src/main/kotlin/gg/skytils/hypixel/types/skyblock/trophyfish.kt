@@ -38,13 +38,14 @@ object TrophyFishDataSerializer : KSerializer<TrophyFishData> {
         element<Int>("total_caught")
         element<Map<String, TrophyFish>>("fish_count")
     }
+    val ignored = setOf("rewards", "total_caught", "last_caught")
 
     private val trophyFishRegex = Regex("(\\w*?(?:fish|er|vanille|horse|ray|fin|[123]))(?:_(?:bronze|silver|gold|diamond))?")
 
     override fun deserialize(decoder: Decoder): TrophyFishData =
         (decoder as? JsonDecoder)?.decodeJsonElement()?.jsonObject?.let { json ->
             val fish = json.entries
-                .filterNot { it.key == "rewards" || it.key == "total_caught" }
+                .filterNot { it.key in ignored }
                 .groupBy { entry ->
                     trophyFishRegex.matchEntire(entry.key)?.groupValues?.get(1) ?: ""
                 }
