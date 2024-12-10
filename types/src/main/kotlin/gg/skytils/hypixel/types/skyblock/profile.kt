@@ -42,10 +42,7 @@ data class ProfileUpgrade(
     @SerialName("started_ms")
     val started: Long,
     val started_by: String,
-    @SerialName("claimed_ms")
-    val claimed: Long,
-    val claimed_by: String,
-    val fasttracked: Boolean
+    val claimed_by: String
 )
 
 @Serializable
