@@ -21,7 +21,7 @@ data class DungeonsData(
     val player_classes: Map<String, DungeonClass> = emptyMap(),
     val dungeon_journal: DungeonJournalData = DungeonJournalData(),
     val selected_dungeon_class: String? = null,
-
+    val secrets: Double = 0.0,
 )
 
 object DungeonTypeSerializer : KSerializer<Map<String, DungeonData>> {
